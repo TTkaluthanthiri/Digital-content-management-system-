@@ -33,12 +33,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>MyTrade - Product</title>
+  <title>Mytrade - Message</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -53,6 +52,11 @@
   
   <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
 
+  <style>
+    
+
+
+  </style>
 
 </head>
 
@@ -62,10 +66,9 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-dark accordion ct-sidebar" id="accordionSidebar">
+    <ul class="navbar-nav ct-sidebar sidebar sidebar-dark accordion ct-sidebar" id="accordionSidebar">
 
       <!-- Account Settings -->
-      
       <div class="ct-accdet account">
         <?php if(isset($_SESSION['Username'])) : ?>
           <div class="ct-accpic account" id="account-pic"><a href="#" data-target="#uploadModal" data-toggle="modal" ><i class="fas fa-plus-circle"></i></a></div>
@@ -88,6 +91,7 @@
         <?php endif; ?>
       </div>
 
+      <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
@@ -329,8 +333,6 @@
           </ul>
 
         </nav>
-
-          
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -342,18 +344,19 @@
           <div class="row">
 
             <!-- Breadcrumb -->
-            <div class="col-xl-12 col-lg-7">
+            <div class="col-xl-12">
               <div class="card shadow mb-4">
                 <div class="card-header d-flex flex-row  breadcr" >
-                  <span class="bread"><a href="index.php">Home</a></span>
+                  <span class="bread"><a href="#">Home</a></span>
                   <span class="ct-breaker">|</span>
-                  <span class="bread"><a href="items.php">Items</a></span>
+                  <span class="bread"><a href="#">Dashboard</a></span>
                   <span class="bread" id="btn_back"><a href="#" ><i class="fas fa-hand-point-left"></i> Back</a></span>
                   <span class="ct-breaker">|</span>
-                  <span class="current">[Item Name]</span>
+                  <span class="current">Messages</span>
                 </div>
               </div>
             </div>
+
           </div>
 
           <!-- Banner Design -->
@@ -362,101 +365,32 @@
             <!-- Area Chart -->
             <div class="col-xl-12 col-lg-7">
               <div class="card shadow mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Item Details</h6>
-                </div>
 
-                <div class="card-body" >
+                <div class="card-body ct-card-spec ct-round-corn" >
                   <div class="row">
                     <div class="col">
-                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 40rem;" src="img/sample/slider/pic7.jpg" height="400" id="item-im"/>
-                      <div class="ct-img-tray">
-                        <hr>
-                        <div class="ct-img-small" style="background-image: url('img/sample/slider/pic7.jpg'); background-position: center; background-repeat: no-repeat;background-size: cover;">
-
-                        </div>
-                        <div class="ct-img-small">
-
-                        </div>
-                        <div class="ct-img-small">
-
-                        </div>
-                        <div class="ct-img-small">
-
-                        </div>
-                        <div class="ct-img-small">
-
-                        </div>
+                      <div class="ct-title-container">
+                        <h1 class="ct-special">ADD PRODUCTS.<br><span class="ct-font-green">GROW YOUR BUSINESS.</span> </h1>
+                        
                       </div>
                       
                     </div>
   
-                    <div class="col" >
-                      <h3 id="title">[TITLE]</h3>
-                      <span>from <span id="seller">Unknown Seller</span></span>
-                      <p id="info" >SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                      <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                      <div class="text-center">
-                        <br><br>
-                        <span class="ct-unit">Rs.</span><span class="ct-value" id="price">2500<span class="ct-small">.00</span></span> | 
-                        <small>Available items - </small><small id="qty">0</small>
-                        <br>
-                        <small>Include Following</small>
-                        <br>
-                        <!-- Custom Cards -->
-                        <div class="ct-flex-tray">
-                          <div class="ct-card-icon"><i class="fas fa-truck"></i></div>
-                          <div class="ct-card-icon"><i class="fas fa-percentage"></i></div>
-                        </div>
-
-                        <hr>
-                        <div class="row">
-                          <div class="col">
-
-                            <div class="text-center">
-                              <p>Order this item by clicking this button.</p>
-                              <center>
-                                <div class="ct-button-outline">
-                                  <div class="input-group-append">
-                                    
-                                    <a href="#" id="order_btn" class="btn btn-primary dark">ORDER</a>
-                                    
-                                  </div>
-                                </div>
-                              </center>
-                              
-                            </div>
-                            
-                          </div>
-
-                          <div class="col">
-                            <p>Rate this item.</p>
-                            <span class="ct-value" id="rate">0</span> / voters <span id="voters">0</span>
-                            <div class="rate-panel">
-                              <div class="star-rating">
-
-                                <input type="radio" name="star" id="star1"><label for="star1"></label>
-                                <input type="radio" name="star" id="star2"><label for="star2"></label>
-                                <input type="radio" name="star" id="star3"><label for="star3"></label>
-                                <input type="radio" name="star" id="star4"><label for="star4"></label>
-                                <input type="radio" name="star" id="star5"><label for="star5"></label>
-                              </div>
-                              <br><br><br><br>
-                              
-                            </div>
-
-                            <div class="form-group">
-                              <label for="itemName">Add Your Comment</label>
-                              <input type="text" class="form-control" id="comment" aria-describedby="nameHelp">
-                              <input type="hidden" id="impscore" value="0">
-                              <input type="hidden" id="impvotes" value="0">
-                              <!-- <small id="nameHelp" class="form-text text-muted">Give a name for your product or service</small> -->
-                            </div>
-                            <a class="btn btn-dark" id="btn_rate">RATE</a>
-                            
-                          </div>
-                        </div>
+                    <div class="ct-m-img col" id="im-col" >
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
                         
+                      
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="ct-title-container">
+                        <p id="exec-dec">Open Sans is a humanist sans serif typeface designed by Steve Matteson, Type Director of Ascender Corp. 
+                          This version contains the complete 897 character set, which includes the standard ISO Latin 1, Latin CE, 
+                          Greek and Cyrillic character sets. Open Sans was designed with an upright stress, open forms and a neutral, 
+                          yet friendly appearance. It was optimized for print, web, and mobile interfaces, and has excellent 
+                          legibility characteristics in its letterforms.</p>
+                        <a href="404.html" class="btn btn-primary bread" >FIND CONTACTS</a>
                       </div>
                     </div>
                   </div>
@@ -468,42 +402,184 @@
             </div>
           </div>
 
-          <!-- Content Row -->
-
+          <!-- Message Box -->
           <div class="row">
 
             <!-- Area Chart -->
-            <div class="col-xl-12 col-lg-7">
+            <div class="col-lg-9 mb-4">
               <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">User Reviews</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                  <h6 class="m-0 font-weight-bold text-primary">Message Box</h6>
+                </div>
+
+                <div class="card-body ct-card-spec" style="height: 90vh;">
+                  <div class="row">
+                    <div class="col">
+                      <p>Chatting with <span class="ct-green" id="contact">[Contact]</span></p>
+                      <!-- Divider -->
+                      <hr>
+
+                      <!-- Chat Sect -->
+                      <div class="col">
+                        <div class="ct-chat-area">
+                          <table  id="chat-table">
+                            <!-- <tr>
+                              <td><div class="left-bubble">Hey Dear!! What's Up!</div></td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td></td>
+                              <td><div class="right-bubble">Yeah! I'm Okay...!</div></td>
+                            </tr> -->
+                            
+                          </table>
+                        </div>
+                        <div class="ct-chat-pannel">
+                          <div ct-pannel-bt>
+                            <div class="tool-set">
+                                <ul class="tool-list"> 
+                                    <li class="tool">
+                                        <button type="button"
+                                        data-command="justifyLeft"
+                                        class="btn-tool">
+                                        <i class="fas fa-align-left"></i>
+                                        </button>
+            
+                                    </li>
+            
+                                    <li class="tool">
+                                        <button type="button"
+                                        data-command="justifyRight"
+                                        class="btn-tool">
+                                        <i class="fas fa-align-right"></i>
+                                        </button>
+            
+                                    </li>
+            
+                                    <li class="tool">
+                                        <button type="button"
+                                        data-command="justifyCenter"
+                                        class="btn-tool">
+                                        <i class="fas fa-align-center"></i>
+                                        </button>
+            
+                                    </li>
+            
+                                    <li class="tool">
+                                        <button type="button"
+                                        data-command="justifyFull"
+                                        class="btn-tool">
+                                        <i class="fas fa-align-justify"></i>
+                                        </button>
+            
+                                    </li>
+            
+                                    <li class="tool">
+                                        <button type="button"
+                                        data-command="bold"
+                                        class="btn-tool">
+                                        <i class="fas fa-bold"></i>
+                                        </button>
+            
+                                    </li>
+            
+                                    <li class="tool">
+                                        <button type="button"
+                                        data-command="italic"
+                                        class="btn-tool">
+                                        <i class="fas fa-italic"></i>
+                                        </button>
+            
+                                    </li>
+            
+                                    <li class="tool">
+                                        <button type="button"
+                                        data-command="underline"
+                                        class="btn-tool">
+                                        <i class="fas fa-underline"></i>
+                                        </button>
+            
+                                    </li>
+            
+                                    <li class="tool">
+                                        <button type="button"
+                                        data-command="insertOrderedList"
+                                        class="btn-tool">
+                                        <i class="fas fa-list-ol"></i>
+                                        </button>
+            
+                                    </li>
+            
+                                    <li class="tool">
+                                        <button type="button"
+                                        data-command="insertUnorderedList"
+                                        class="btn-tool">
+                                        <i class="fas fa-list-ul"></i>
+                                        </button>
+            
+                                    </li>
+            
+                                    <li class="tool">
+                                        <button type="button"
+                                        data-command="createlink"
+                                        class="btn-tool">
+                                        <i class="fas fa-link"></i>
+                                        </button>
+            
+                                    </li>
+                                    
+                                    <li class="tool">
+                                      <button class="btn btn-primary ct-button-dynamic" id="btn_message" style="margin-top: 2px; margin-left: 2px;">SEND MESSAGE</button>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+
+                            <div class="output-text" id="text-div" contenteditable="true">
+
+                            </div>
+
+                          </div>
+                          
+                        </div>
+
+                      </div>
+
                     </div>
                   </div>
+                  
+                  
                 </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="text-center">
-                    <div class="ct-list-container" >
-                      <ul class="ct-contact-list" id="comments">
-                        
-                      </ul>
-                      </div>
-                  </div>
-                </div>
+
               </div>
             </div>
+
+            <div class="col-lg-3 mb-4">
+
+              <!-- Illustrations -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Personal Contacts</h6>
+                </div>
+                <div class="card-body ct-card-spec" style="height: 90vh;">
+                  <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
+                  </div>
+                  <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
+                  <br>
+                  <div class="ct-contact-book">
+                    <ul class="ct-contact-list" id="contacts">
+                    </ul>
+                  </div>
+                  
+                </div>
+              </div>
+
+            </div>
+          
           </div>
+          
+
         </div>
         <!-- /.container-fluid -->
 
@@ -578,6 +654,8 @@
     </div>
   </div>
 
+  
+
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -593,66 +671,77 @@
   <!-- Page level plugins -->
   <script src="vendor/chart.js/Chart.min.js"></script>
 
+  <!-- Core plugin JavaScript-->
+  <script src="js/jquery-easing/jquery.easing.min.js"></script>
+
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
 
+  
   <script src="js/plugin/login_swap.js"></script>
   <script src="js/plugin/upload.js"></script>
+  <script src="js/plugin/editor.js"></script>
 
   <script>
+
+    var holder = "<?php if(isset($_SESSION['Username'])) { echo $_SESSION['Username'];} else echo "NO USER"?>";
+    var contact = document.getElementById("contact");        
     const log = document.getElementById('logout');
     const log2 = document.getElementById('login');
     const user = document.getElementById('user-icon');
     const account = document.querySelectorAll('.account');
     const log_panel = document.getElementById('log-panel');
 
-    // const upload = document.getElementById('btn_upload');
-    // upload.addEventListener('click', userProfileUpload(event));
-
-    const order_btn = document.getElementById('order_btn');
-
     var login_state = false;
-    var holder = "<?php if(isset($_SESSION['Username'])) { echo $_SESSION['Username'];} else echo "NO USER"?>";
-    var rate = 0;
-    var url = new URL(window.location.href);
-    var param = url.searchParams.get("id");
-    getItem(param);
+    getContacts(holder);
 
-    getItemRate(param);
+    let output = document.getElementsByClassName('output-text');
+    let buttons = document.getElementsByClassName('btn-tool');
+    let out = document.getElementById('text-div');
 
-    order_btn.addEventListener('click', () => {
-      window.location.href = "order-single.php?id="+param;
-    })
-    
-    // Rating
-    const st1 = document.getElementById('star1');   
-    const st2 = document.getElementById('star2'); 
-    const st3 = document.getElementById('star3'); 
-    const st4 = document.getElementById('star4'); 
-    const st5 = document.getElementById('star5'); 
-    const comment = document.getElementById('comment'); 
-    const btn_rate = document.getElementById('btn_rate'); 
+    for(let btn of buttons){
+          btn.addEventListener('click', ()=>{
+              
+              let command = btn.dataset['command'];
+              
+              if(command=='createlink'){
+                  let url = prompt("Enter Hyperlink address: ", "http:\/\/");
+                  document.execCommand(command, false, url);
 
-    st1.addEventListener('click', () => rate = 5);  
-    st2.addEventListener('click', () => rate = 4);  
-    st3.addEventListener('click', () => rate = 3);  
-    st4.addEventListener('click', () => rate = 2);  
-    st5.addEventListener('click', () => rate = 1); 
-    
-    // var rate = document.getElementById("impscore");
-    // var raters = document.getElementById("impvotes");
+              } else {
+                  document.execCommand(command, false, null);
 
-    // var intRate = parseFloat(rate.value);
-    // var intRaters = parseFloat(raters.value);
+              }
+          });
+      }
 
-    btn_rate.addEventListener('click', () => RateIitem(param, holder, rate, comment.value));
-    
-    
-    function logout(){
-      window.location="./php/logout.php";
-    }
-    
+      // Editor settings
+      var text_line = document.getElementById('text-div');
+      const message = document.getElementById('btn_message');
+      const chat_area = document.getElementById('chat-table');
+      message.addEventListener('click', ()=>{
+        console.log(text_line.innerText);
+        var tr = document.createElement('tr');
+        var td = document.createElement('td');
+        var td2 = document.createElement('td');
+        var p = document.createElement('p');
+        p.className ="right-bubble";
+        p.innerHTML = text_line.innerHTML;
+        td.appendChild(p);
+        tr.appendChild(td2);
+        tr.appendChild(td);
+        chat_area.appendChild(tr);
+        $(".ct-chat-area").animate({ scrollTop: $('.ct-chat-area').prop("scrollHeight")}, 1000);
+
+        sendMessage(holder, contact.innerText, text_line.innerHTML);
+
+      });
+      
+      function logout(){
+        window.location="./php/logout.php";
+      }
+
   </script>
 
 </body>

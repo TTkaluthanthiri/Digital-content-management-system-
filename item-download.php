@@ -347,10 +347,10 @@
                 <div class="card-header d-flex flex-row  breadcr" >
                   <span class="bread"><a href="index.php">Home</a></span>
                   <span class="ct-breaker">|</span>
-                  <span class="bread"><a href="items.php">Items</a></span>
+                  <span class="bread"><a href="profile.php">Profile</a></span>
                   <span class="bread" id="btn_back"><a href="#" ><i class="fas fa-hand-point-left"></i> Back</a></span>
                   <span class="ct-breaker">|</span>
-                  <span class="current">[Item Name]</span>
+                  <span class="current">[Item Name] Download</span>
                 </div>
               </div>
             </div>
@@ -372,21 +372,10 @@
                       <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 40rem;" src="img/sample/slider/pic7.jpg" height="400" id="item-im"/>
                       <div class="ct-img-tray">
                         <hr>
-                        <div class="ct-img-small" style="background-image: url('img/sample/slider/pic7.jpg'); background-position: center; background-repeat: no-repeat;background-size: cover;">
-
+                        <div class="ct-timer" id="time-sect">
+                            [TIMER]
                         </div>
-                        <div class="ct-img-small">
-
-                        </div>
-                        <div class="ct-img-small">
-
-                        </div>
-                        <div class="ct-img-small">
-
-                        </div>
-                        <div class="ct-img-small">
-
-                        </div>
+                        
                       </div>
                       
                     </div>
@@ -414,12 +403,12 @@
                           <div class="col">
 
                             <div class="text-center">
-                              <p>Order this item by clicking this button.</p>
+                              <p>Download this item by clicking this button.</p>
                               <center>
                                 <div class="ct-button-outline">
-                                  <div class="input-group-append">
+                                  <div class="input-group-append text-center">
                                     
-                                    <a href="#" id="order_btn" class="btn btn-primary dark">ORDER</a>
+                                    <a href="#" id="order_btn" class="btn btn-primary dark">DOWNLOAD</a>
                                     
                                   </div>
                                 </div>
@@ -430,30 +419,7 @@
                           </div>
 
                           <div class="col">
-                            <p>Rate this item.</p>
-                            <span class="ct-value" id="rate">0</span> / voters <span id="voters">0</span>
-                            <div class="rate-panel">
-                              <div class="star-rating">
-
-                                <input type="radio" name="star" id="star1"><label for="star1"></label>
-                                <input type="radio" name="star" id="star2"><label for="star2"></label>
-                                <input type="radio" name="star" id="star3"><label for="star3"></label>
-                                <input type="radio" name="star" id="star4"><label for="star4"></label>
-                                <input type="radio" name="star" id="star5"><label for="star5"></label>
-                              </div>
-                              <br><br><br><br>
-                              
-                            </div>
-
-                            <div class="form-group">
-                              <label for="itemName">Add Your Comment</label>
-                              <input type="text" class="form-control" id="comment" aria-describedby="nameHelp">
-                              <input type="hidden" id="impscore" value="0">
-                              <input type="hidden" id="impvotes" value="0">
-                              <!-- <small id="nameHelp" class="form-text text-muted">Give a name for your product or service</small> -->
-                            </div>
-                            <a class="btn btn-dark" id="btn_rate">RATE</a>
-                            
+                            <p>Paid and Available Full Quality </p>
                           </div>
                         </div>
                         
@@ -494,9 +460,59 @@
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="text-center">
-                    <div class="ct-list-container" >
-                      <ul class="ct-contact-list" id="comments">
-                        
+                    <div class="ct-list-container">
+                      <ul class="ct-contact-list">
+                        <li>
+                          <div class="ct-contact list-light">
+                            <div class="row">
+                              <div class="col">
+                                <span class="ct-txt-highlight">[REVIEWER NAME]</span>  [ROLE]<br>
+                                <div class="text-left">
+                                  <p>The code you're using doesn't expect a Date object in the settings.date field. It expects a string which it will then parse.</p>
+                                </div>
+                              </div>
+
+                              <div class="col">
+                                <!-- Star Ratings -->
+                                <div class="ct-flex-tray">
+                                  User Rate |     
+                                  <span><i class="fas fa-star ct-blink-star"></i></span>
+                                  <span><i class="fas fa-star"></i></span>
+                                  <span><i class="fas fa-star"></i></span>
+                                  <span><i class="fas fa-star"></i></span>
+                                  <span><i class="fas fa-star"></i></span>
+                                </div>
+                              </div>
+                            <br>
+                            
+                          </div>
+                        </li>
+
+                        <li>
+                          <div class="ct-contact list-light">
+                            <div class="row">
+                              <div class="col">
+                                <span class="ct-txt-highlight">[REVIEWER NAME]</span>  [ROLE]<br>
+                                <div class="text-left">
+                                  <p>The code you're using doesn't expect a Date object in the settings.date field. It expects a string which it will then parse.</p>
+                                </div>
+                              </div>
+
+                              <div class="col">
+                                <!-- Star Ratings -->
+                                <div class="ct-flex-tray">
+                                  User Rate |     
+                                  <span><i class="fas fa-star ct-blink-star"></i></span>
+                                  <span><i class="fas fa-star"></i></span>
+                                  <span><i class="fas fa-star"></i></span>
+                                  <span><i class="fas fa-star"></i></span>
+                                  <span><i class="fas fa-star"></i></span>
+                                </div>
+                              </div>
+                            <br>
+                            
+                          </div>
+                        </li>
                       </ul>
                       </div>
                   </div>
@@ -589,9 +605,12 @@
   <script src="js/sb-admin-2.js"></script>
 
   <script src="js/firebase/items.js"></script>
+  <script src="js/plugin/timer.js"></script>
 
   <!-- Page level plugins -->
   <script src="vendor/chart.js/Chart.min.js"></script>
+
+  
 
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
@@ -599,6 +618,10 @@
 
   <script src="js/plugin/login_swap.js"></script>
   <script src="js/plugin/upload.js"></script>
+
+  <!-- Timer -->
+  <script src="js/jquery.countdown-2.2.0/jquery.countdown.js"></script>
+  <script src="js/plugin/timer.js"></script>
 
   <script>
     const log = document.getElementById('logout');
@@ -610,44 +633,20 @@
     // const upload = document.getElementById('btn_upload');
     // upload.addEventListener('click', userProfileUpload(event));
 
-    const order_btn = document.getElementById('order_btn');
+    const down_btn = document.getElementById('download_btn');
 
     var login_state = false;
-    var holder = "<?php if(isset($_SESSION['Username'])) { echo $_SESSION['Username'];} else echo "NO USER"?>";
-    var rate = 0;
+
     var url = new URL(window.location.href);
     var param = url.searchParams.get("id");
+    var date = url.searchParams.get("date");
     getItem(param);
 
-    getItemRate(param);
+    launchTimers(date);
 
-    order_btn.addEventListener('click', () => {
+    down_btn.addEventListener('click', () => {
       window.location.href = "order-single.php?id="+param;
-    })
-    
-    // Rating
-    const st1 = document.getElementById('star1');   
-    const st2 = document.getElementById('star2'); 
-    const st3 = document.getElementById('star3'); 
-    const st4 = document.getElementById('star4'); 
-    const st5 = document.getElementById('star5'); 
-    const comment = document.getElementById('comment'); 
-    const btn_rate = document.getElementById('btn_rate'); 
-
-    st1.addEventListener('click', () => rate = 5);  
-    st2.addEventListener('click', () => rate = 4);  
-    st3.addEventListener('click', () => rate = 3);  
-    st4.addEventListener('click', () => rate = 2);  
-    st5.addEventListener('click', () => rate = 1); 
-    
-    // var rate = document.getElementById("impscore");
-    // var raters = document.getElementById("impvotes");
-
-    // var intRate = parseFloat(rate.value);
-    // var intRaters = parseFloat(raters.value);
-
-    btn_rate.addEventListener('click', () => RateIitem(param, holder, rate, comment.value));
-    
+    })            
     
     function logout(){
       window.location="./php/logout.php";

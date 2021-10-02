@@ -66,10 +66,10 @@
       <div class="ct-accdet account">
         <?php if(isset($_SESSION['Username'])) : ?>
           <div class="ct-accpic account" id="account-pic"><a href="#" data-target="#uploadModal" data-toggle="modal" ><i class="fas fa-plus-circle"></i></a></div>
-          <h4><?php if(isset($_SESSION['Username'])) { echo $_SESSION['Username'];} else echo "NO USER"?></h4><br>
-          <span>[Role]</span><br>
-          <span>[Description]</span><br>
-          <button class="btn btn-light" onclick="login_state_change(login_state)">LOGOUT</button><br><br>
+          <h4><?php if(isset($_SESSION['Username'])) { echo $_SESSION['Username'];} else echo "NO USER"?></h4>
+          <span><?php if(isset($_SESSION['Role'])) { echo $_SESSION['Role'];} else echo "Not Mentioned"?></span><br>
+          <!-- <span>[Description]</span><br> -->
+          <button class="btn btn-light" onClick="logout()">LOGOUT</button><br><br>
         <?php else : ?>
           <div class="text-center">
             <h4>HINT</h4>
@@ -78,7 +78,7 @@
           <a class="btn btn-light" 
           href="login.html"
           >LOGIN</a><br><br>
-          <span>OR</span>
+          <span>OR</span><br><br>
           <a class="btn btn-dark" 
           href="register.html"
           >REGISTER</a><br><br>
@@ -93,10 +93,18 @@
       <div class="sidebar-heading">
         Site Navigation
       </div>
-
-      
       <li class="nav-item">
-        <a class="nav-link" href="about.html" id="ct-link">
+        <a class="nav-link" href="index.php" id="ct-link">
+          <i class="fas fa-users-cog"></i>
+          <span>Home</span></a>
+      </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="items.php" id="ct-link">
+          <i class="fas fa-users-cog"></i>
+          <span>Products</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about.php" id="ct-link">
           <i class="fas fa-users"></i>
           <span>About Us</span></a>
       </li>
@@ -127,16 +135,16 @@
           <span>Messages</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="items.php" id="ct-link">
+        <a class="nav-link" href="my-items.php" id="ct-link">
           <i class="fas fa-users-cog"></i>
           <span>My Products</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="orders.php" id="ct-link">
-          <i class="fas fa-luggage-cart"></i>
-          <span>Orders</span></a>
+        <a class="nav-link" href="my-orders.php" id="ct-link">
+          <i class="fas fa-users-cog"></i>
+          <span>My Orders</span></a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="earnings_buyings.html" id="ct-link">
           <i class="fas fa-book"></i>
           <span>Earnings and Buyings</span></a>
@@ -145,7 +153,7 @@
         <a class="nav-link" href="wallet.html" id="ct-link">
           <i class="fas fa-wallet"></i>
           <span>Ez Wallet</span></a>
-      </li>
+      </li> -->
       <!-- Divider -->
       <hr class="sidebar-divider">
       <?php endif; ?>
@@ -182,8 +190,10 @@
             
             <ul>
               <li><a href="index.html"><h3>MyTrade</h3></a></li>
-              <li><a href="index.html" class="nav-hide"><i class="fas fa-home"></i></a></li>
-              <li><a href="products.html" class="nav-hide"><i class="fas fa-shapes"></i></a></li>
+              <?php if(isset($_SESSION['Username'])) : ?>
+              <li><a href="my-items.php" class="nav-hide"><i class="fas fa-home"></i></a></li>
+              <li><a href="my-orders.php" class="nav-hide"><i class="fas fa-shapes"></i></a></li>
+              <?php endif; ?>
             </ul>
           </div>
 
@@ -307,9 +317,9 @@
             <div class="ct-button-outline" id="nav-log">
               <div class="input-group-append">
               <?php if(isset($_SESSION['Username'])) : ?>
-                <a class="btn btn-primary" id="logout" href="login.html">LOGOUT</a>
+                <a class="btn btn-light" id="logout"  onClick="logout()">LOGOUT</a>
               <?php else : ?>
-                <a class="btn btn-primary" id="login" href="login.html">LOGIN</a>
+                <a class="btn btn-success" id="login" href="login.html">LOGIN</a>
               <?php endif ; ?>
             </div>
 
@@ -605,7 +615,9 @@
 
     var login_state = false;
 
-    
+    function logout(){
+      window.location="./php/logout.php";
+    }
   </script>
 
 </body>

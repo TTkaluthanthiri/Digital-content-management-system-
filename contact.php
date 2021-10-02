@@ -33,12 +33,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>MyTrade - Product</title>
+  <title>MyTrade - Contact Us</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -46,13 +45,11 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link href="css/sb-custom.css" rel="stylesheet">
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
-  
-  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+  <style>
+    
 
+
+  </style>
 
 </head>
 
@@ -62,10 +59,9 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-dark accordion ct-sidebar" id="accordionSidebar">
+    <ul class="navbar-nav ct-sidebar sidebar sidebar-dark accordion ct-sidebar" id="accordionSidebar">
 
       <!-- Account Settings -->
-      
       <div class="ct-accdet account">
         <?php if(isset($_SESSION['Username'])) : ?>
           <div class="ct-accpic account" id="account-pic"><a href="#" data-target="#uploadModal" data-toggle="modal" ><i class="fas fa-plus-circle"></i></a></div>
@@ -88,6 +84,7 @@
         <?php endif; ?>
       </div>
 
+      <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
@@ -329,8 +326,6 @@
           </ul>
 
         </nav>
-
-          
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -342,15 +337,14 @@
           <div class="row">
 
             <!-- Breadcrumb -->
-            <div class="col-xl-12 col-lg-7">
+            <div class="col-xl-12">
               <div class="card shadow mb-4">
-                <div class="card-header d-flex flex-row  breadcr" >
-                  <span class="bread"><a href="index.php">Home</a></span>
-                  <span class="ct-breaker">|</span>
-                  <span class="bread"><a href="items.php">Items</a></span>
+                <div class=" d-flex flex-row  breadcr" >
+                  
+                  <span class="bread"><a href="#">Home</a></span>
                   <span class="bread" id="btn_back"><a href="#" ><i class="fas fa-hand-point-left"></i> Back</a></span>
                   <span class="ct-breaker">|</span>
-                  <span class="current">[Item Name]</span>
+                  <span class="current">Contact Us</span>
                 </div>
               </div>
             </div>
@@ -360,103 +354,97 @@
           <div class="row">
 
             <!-- Area Chart -->
-            <div class="col-xl-12 col-lg-7">
+            <div class="col-xl-12">
               <div class="card shadow mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Item Details</h6>
-                </div>
 
-                <div class="card-body" >
+                <div class="card-body ct-card-spec ct-round-corn" >
                   <div class="row">
                     <div class="col">
-                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 40rem;" src="img/sample/slider/pic7.jpg" height="400" id="item-im"/>
-                      <div class="ct-img-tray">
-                        <hr>
-                        <div class="ct-img-small" style="background-image: url('img/sample/slider/pic7.jpg'); background-position: center; background-repeat: no-repeat;background-size: cover;">
-
-                        </div>
-                        <div class="ct-img-small">
-
-                        </div>
-                        <div class="ct-img-small">
-
-                        </div>
-                        <div class="ct-img-small">
-
-                        </div>
-                        <div class="ct-img-small">
-
-                        </div>
+                      <div class="ct-title-container">
+                        <h1 class="ct-special">KEEP IN<br><span class="ct-font-green">TOUCH</span> </h1>
+                        
                       </div>
                       
                     </div>
   
-                    <div class="col" >
-                      <h3 id="title">[TITLE]</h3>
-                      <span>from <span id="seller">Unknown Seller</span></span>
-                      <p id="info" >SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                      <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                      <div class="text-center">
-                        <br><br>
-                        <span class="ct-unit">Rs.</span><span class="ct-value" id="price">2500<span class="ct-small">.00</span></span> | 
-                        <small>Available items - </small><small id="qty">0</small>
-                        <br>
-                        <small>Include Following</small>
-                        <br>
-                        <!-- Custom Cards -->
-                        <div class="ct-flex-tray">
-                          <div class="ct-card-icon"><i class="fas fa-truck"></i></div>
-                          <div class="ct-card-icon"><i class="fas fa-percentage"></i></div>
-                        </div>
+                    <div class="ct-m-img col" id="im-col" >
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
+                        
+                      
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="ct-title-container">
+                        <p id="exec-dec">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the 
+                          industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it 
+                          to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, 
+                          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem 
+                          Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem 
+                          Ipsum.</p>
 
-                        <hr>
-                        <div class="row">
-                          <div class="col">
+                          <p id="exec-dec">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the 
+                            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it 
+                            to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, 
+                            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem 
+                            Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem 
+                            Ipsum.</p>
+                          <br>  
+                          <h4 class="ct-font-green">CONTACT FORM</h4>  
 
-                            <div class="text-center">
-                              <p>Order this item by clicking this button.</p>
-                              <center>
-                                <div class="ct-button-outline">
-                                  <div class="input-group-append">
-                                    
-                                    <a href="#" id="order_btn" class="btn btn-primary dark">ORDER</a>
-                                    
-                                  </div>
-                                </div>
-                              </center>
-                              
-                            </div>
-                            
-                          </div>
-
-                          <div class="col">
-                            <p>Rate this item.</p>
-                            <span class="ct-value" id="rate">0</span> / voters <span id="voters">0</span>
-                            <div class="rate-panel">
-                              <div class="star-rating">
-
-                                <input type="radio" name="star" id="star1"><label for="star1"></label>
-                                <input type="radio" name="star" id="star2"><label for="star2"></label>
-                                <input type="radio" name="star" id="star3"><label for="star3"></label>
-                                <input type="radio" name="star" id="star4"><label for="star4"></label>
-                                <input type="radio" name="star" id="star5"><label for="star5"></label>
+                          <div class="row">
+                    
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="itemPurpose">Name</label>
+                                <input type="email" class="form-control" id="itemPurpose" aria-describedby="purposeHelp">
+                                <small id="purposeHelp" class="form-text text-muted">Main use, expected uses of Item</small>
                               </div>
-                              <br><br><br><br>
-                              
+
+                              <div class="form-group">
+                                <label for="itemPurpose">Email</label>
+                                <input type="email" class="form-control" id="itemPurpose" aria-describedby="purposeHelp">
+                                <small id="purposeHelp" class="form-text text-muted">Main use, expected uses of Item</small>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="itemPurpose">Telephone</label>
+                                <input type="email" class="form-control" id="itemPurpose" aria-describedby="purposeHelp">
+                                <small id="purposeHelp" class="form-text text-muted">Main use, expected uses of Item</small>
+                              </div>
+      
                             </div>
 
-                            <div class="form-group">
-                              <label for="itemName">Add Your Comment</label>
-                              <input type="text" class="form-control" id="comment" aria-describedby="nameHelp">
-                              <input type="hidden" id="impscore" value="0">
-                              <input type="hidden" id="impvotes" value="0">
-                              <!-- <small id="nameHelp" class="form-text text-muted">Give a name for your product or service</small> -->
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="itemDesc">Item Description</label>
+                                <textarea class="form-control" id="itemDesc" rows="5"></textarea>
+                                <small id="descHelp" class="form-text text-muted">Explain further about item's category</small>
+                              </div>
+
+                              <div class="form-group">
+                                <input type="button" class="btn btn-primary  bread" value="SUBMIT">
+                              </div>
                             </div>
-                            <a class="btn btn-dark" id="btn_rate">RATE</a>
-                            
+                             
                           </div>
-                        </div>
-                        
+                          
+                          <br>
+                          <p id="exec-dec">It is a long established fact that a reader will be distracted by the readable content of a page when 
+                            looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
+                            as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing 
+                            packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will 
+                            uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, 
+                            sometimes on purpose (injected humour and the like).</p>
+
+                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                          <a href="#search-model">
+                            <div class="ct-search-hidden" id="search-icon">
+                              <i class="fas fa-search"></i>
+                            </div>
+                          </a>
+                          
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -468,42 +456,8 @@
             </div>
           </div>
 
-          <!-- Content Row -->
+          
 
-          <div class="row">
-
-            <!-- Area Chart -->
-            <div class="col-xl-12 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">User Reviews</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="text-center">
-                    <div class="ct-list-container" >
-                      <ul class="ct-contact-list" id="comments">
-                        
-                      </ul>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <!-- /.container-fluid -->
 
@@ -578,6 +532,8 @@
     </div>
   </div>
 
+  
+
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -587,8 +543,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.js"></script>
-
-  <script src="js/firebase/items.js"></script>
 
   <!-- Page level plugins -->
   <script src="vendor/chart.js/Chart.min.js"></script>
@@ -610,49 +564,11 @@
     // const upload = document.getElementById('btn_upload');
     // upload.addEventListener('click', userProfileUpload(event));
 
-    const order_btn = document.getElementById('order_btn');
-
     var login_state = false;
-    var holder = "<?php if(isset($_SESSION['Username'])) { echo $_SESSION['Username'];} else echo "NO USER"?>";
-    var rate = 0;
-    var url = new URL(window.location.href);
-    var param = url.searchParams.get("id");
-    getItem(param);
 
-    getItemRate(param);
-
-    order_btn.addEventListener('click', () => {
-      window.location.href = "order-single.php?id="+param;
-    })
-    
-    // Rating
-    const st1 = document.getElementById('star1');   
-    const st2 = document.getElementById('star2'); 
-    const st3 = document.getElementById('star3'); 
-    const st4 = document.getElementById('star4'); 
-    const st5 = document.getElementById('star5'); 
-    const comment = document.getElementById('comment'); 
-    const btn_rate = document.getElementById('btn_rate'); 
-
-    st1.addEventListener('click', () => rate = 5);  
-    st2.addEventListener('click', () => rate = 4);  
-    st3.addEventListener('click', () => rate = 3);  
-    st4.addEventListener('click', () => rate = 2);  
-    st5.addEventListener('click', () => rate = 1); 
-    
-    // var rate = document.getElementById("impscore");
-    // var raters = document.getElementById("impvotes");
-
-    // var intRate = parseFloat(rate.value);
-    // var intRaters = parseFloat(raters.value);
-
-    btn_rate.addEventListener('click', () => RateIitem(param, holder, rate, comment.value));
-    
-    
     function logout(){
       window.location="./php/logout.php";
     }
-    
   </script>
 
 </body>

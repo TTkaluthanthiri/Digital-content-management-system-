@@ -45,6 +45,13 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link href="css/sb-custom.css" rel="stylesheet">
 
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
   <style>
     
 
@@ -66,10 +73,10 @@
       <div class="ct-accdet account">
         <?php if(isset($_SESSION['Username'])) : ?>
           <div class="ct-accpic account" id="account-pic"><a href="#" data-target="#uploadModal" data-toggle="modal" ><i class="fas fa-plus-circle"></i></a></div>
-          <h4><?php if(isset($_SESSION['Username'])) { echo $_SESSION['Username'];} else echo "NO USER"?></h4><br>
-          <span>[Role]</span><br>
-          <span>[Description]</span><br>
-          <button class="btn btn-light" onclick="login_state_change(login_state)">LOGOUT</button><br><br>
+          <h4><?php if(isset($_SESSION['Username'])) { echo $_SESSION['Username'];} else echo "NO USER"?></h4>
+          <span><?php if(isset($_SESSION['Role'])) { echo $_SESSION['Role'];} else echo "Not Mentioned"?></span><br>
+          <!-- <span>[Description]</span><br> -->
+          <button class="btn btn-light" onClick="logout()">LOGOUT</button><br><br>
         <?php else : ?>
           <div class="text-center">
             <h4>HINT</h4>
@@ -78,7 +85,7 @@
           <a class="btn btn-light" 
           href="login.html"
           >LOGIN</a><br><br>
-          <span>OR</span>
+          <span>OR</span><br><br>
           <a class="btn btn-dark" 
           href="register.html"
           >REGISTER</a><br><br>
@@ -93,10 +100,18 @@
       <div class="sidebar-heading">
         Site Navigation
       </div>
-
-      
       <li class="nav-item">
-        <a class="nav-link" href="about.html" id="ct-link">
+        <a class="nav-link" href="index.php" id="ct-link">
+          <i class="fas fa-users-cog"></i>
+          <span>Home</span></a>
+      </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="items.php" id="ct-link">
+          <i class="fas fa-users-cog"></i>
+          <span>Products</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about.php" id="ct-link">
           <i class="fas fa-users"></i>
           <span>About Us</span></a>
       </li>
@@ -127,16 +142,16 @@
           <span>Messages</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="items.php" id="ct-link">
+        <a class="nav-link" href="my-items.php" id="ct-link">
           <i class="fas fa-users-cog"></i>
           <span>My Products</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="orders.php" id="ct-link">
-          <i class="fas fa-luggage-cart"></i>
-          <span>Orders</span></a>
+        <a class="nav-link" href="my-orders.php" id="ct-link">
+          <i class="fas fa-users-cog"></i>
+          <span>My Orders</span></a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="earnings_buyings.html" id="ct-link">
           <i class="fas fa-book"></i>
           <span>Earnings and Buyings</span></a>
@@ -145,7 +160,7 @@
         <a class="nav-link" href="wallet.html" id="ct-link">
           <i class="fas fa-wallet"></i>
           <span>Ez Wallet</span></a>
-      </li>
+      </li> -->
       <!-- Divider -->
       <hr class="sidebar-divider">
       <?php endif; ?>
@@ -182,8 +197,10 @@
             
             <ul>
               <li><a href="index.html"><h3>MyTrade</h3></a></li>
-              <li><a href="index.html" class="nav-hide"><i class="fas fa-home"></i></a></li>
-              <li><a href="products.html" class="nav-hide"><i class="fas fa-shapes"></i></a></li>
+              <?php if(isset($_SESSION['Username'])) : ?>
+              <li><a href="my-items.php" class="nav-hide"><i class="fas fa-home"></i></a></li>
+              <li><a href="my-orders.php" class="nav-hide"><i class="fas fa-shapes"></i></a></li>
+              <?php endif; ?>
             </ul>
           </div>
 
@@ -307,9 +324,9 @@
             <div class="ct-button-outline" id="nav-log">
               <div class="input-group-append">
               <?php if(isset($_SESSION['Username'])) : ?>
-                <a class="btn btn-primary" id="logout" href="login.html">LOGOUT</a>
+                <a class="btn btn-light" id="logout"  onClick="logout()">LOGOUT</a>
               <?php else : ?>
-                <a class="btn btn-primary" id="login" href="login.html">LOGIN</a>
+                <a class="btn btn-success" id="login" href="login.html">LOGIN</a>
               <?php endif ; ?>
             </div>
 
@@ -330,10 +347,7 @@
             <div class="col-xl-12">
               <div class="card shadow mb-4">
                 <div class="card-header d-flex flex-row  breadcr" >
-                  <span class="bread"><a href="#">Home</a></span>
-                  <span class="ct-breaker">|</span>
-                  <span class="bread"><a href="#">Dashboard</a></span>
-                  <span class="bread" id="btn_back"><a href="#" ><i class="fas fa-hand-point-left"></i> Back</a></span>
+                  <span class="bread"><a href="index.php">Home</a></span>
                   <span class="ct-breaker">|</span>
                   <span class="current">Profile</span>
                 </div>
@@ -347,8 +361,24 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings Rate</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000/<sub>MONTHLY</sub></div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Earnings</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.<span id="earn">00<span></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Active Months</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="months">0</span></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -364,7 +394,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings Rate</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000/<sub>MONTHLY</sub></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="rate">0</span></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -379,24 +409,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings Rate</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000/<sub>MONTHLY</sub></div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings Rate</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000/<sub>MONTHLY</sub></div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Monthly Rate</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.<span id="earn2">0</span>/<sub>MONTHLY</sub></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -450,40 +464,106 @@
           </div>
 
           <!-- Items and Orders -->
-          <h3>ORDERS</h3>
+          <h2 class="ct-font-green">OPTIONS</h2>
           <div class="row" id="item-container">
 
-           
-            <div class="col-xl-4 col-lg-5">
+            <div class="col-xl-6 col-lg-5" >
               <div class="card shadow mb-4">
                 
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="text-center">
-                    <h4>[SERVICE TITLE]</h4>
+                    <h4>MY ITEMS</h4>
                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt=""><br>
-                    <span class="ct-unit">Rs.</span><span class="ct-value">2500<span class="ct-small">.00</span></span>
+                    <p>Items that you entered for commercial purposes.</p>
                   </div>
-                  <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
+                  
                   <div class="text-center">
                     <div class="ct-button-outline">
-                      <a class="btn btn-primary dark" href="item-single.html">ORDER</a>
+                      <a class="btn btn-primary dark" href="my-items.html">VISIT</a>
                     </div>
                     
                   </div>
-                  <a target="_blank" rel="nofollow" href="https://undraw.co/">Get More Details &rarr;</a>
                 </div>
               </div>
-            </div>            
-          </div>
-
-
-          <!-- TABLE FOR BUYING HISTORY -->
-          <div class="row">
-            <div class="col-xl-4 col-lg-5">
-
+            </div>    
+            <div class="col-xl-6 col-lg-5">
+              <div class="card shadow mb-4">
+                
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="text-center">
+                    <h4>MY ORDERS</h4>
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt=""><br>
+                    <p>Orders that you have purched or ones add to shopping cart.</p>
+                  </div>
+                  
+                  <div class="text-center">
+                    <div class="ct-button-outline">
+                      <a class="btn btn-primary dark" href="my-items.html">VISIT</a>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="col-xl-12 col-lg-5">
+              <div class="card shadow mb-4">
+                
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="text-center">
+                    <h4>MY ITEMS</h4>
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt=""><br>
+                    <p>Items that you entered for commercial purposes.</p>
+                  </div>
+                  
+                  <div class="text-center">
+                    <div class="ct-button-outline">
+                      <a class="btn btn-primary dark" href="my-items.html">VISIT</a>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>         
           </div>
+          <br><hr><br>
+          <?php if($level==4) : ?>
+          <h2 class="ct-font-green">USER REQUESTS</h2>
+          <!-- TABLE FOR BUYING HISTORY -->
+          
+          <div class="row">
+            <div class="col-xl-12 col-lg-5">
+              <div class="card shadow mb-4">
+                
+                <!-- Card Body -->
+                <div class="card-body">
+                <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th scope="col">Usernanme</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">User State</th>
+                      <th scope="col">OPtions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="user-table">
+                    <!-- <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr> -->
+    
+                  </tbody>
+                </table>
+                </div>
+              </div>
+            </div>    
+          </div>
+          <?php endif; ?>
 
           <!-- Content Row -->
 
@@ -695,6 +775,8 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.js"></script>
 
+  <script src="js/firebase/items.js"></script>
+
   <!-- Page level plugins -->
   <script src="vendor/chart.js/Chart.min.js"></script>
 
@@ -716,11 +798,16 @@
     // upload.addEventListener('click', userProfileUpload(event));
 
     var login_state = false;
+    var holder = "<?php if(isset($_SESSION['Username'])) { echo $_SESSION['Username'];} else echo "NO USER"?>";
 
-    ScrollReveal().reveal('.row');
-    // ScrollReveal().reveal('.ct-unit');
+    // ScrollReveal().reveal('.row');
     
-    
+    loadUserStats(holder);
+    getUsers();
+
+    function logout(){
+      window.location="./php/logout.php";
+    }
   </script>
 
 </body>
